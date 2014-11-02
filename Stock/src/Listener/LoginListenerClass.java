@@ -67,7 +67,7 @@ public class LoginListenerClass implements ActionListener{
 		//从数据库中查找用户,比对密码
 		usernameString = jtf1.getText();
 		passwordString = jpf1.getText();
-		sqlString = "select password from administrator where id = '"+jtf1.getText()+"'";
+		sqlString = "select password from administrator where idCard = '"+jtf1.getText()+"'";//362426199404060027
 		try {
 			result = statement.executeQuery(sqlString);
 			while(result.next())
