@@ -5,6 +5,8 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import Listener.ViewMyStock;
+
 
 
 public class MyStockViewPanel extends JPanel{
@@ -48,6 +50,8 @@ public class MyStockViewPanel extends JPanel{
 	      JButton btViewMyStock = new JButton("查询我的股票");
 	      btViewMyStock.setSize(20, 10);
 	      jpother.add(btViewMyStock);
+	      ViewMyStock vms = new ViewMyStock();
+	      btViewMyStock.addActionListener(vms);
 	  
 	      JButton btViewMyFundAccount = new JButton("查询我的资金账户");
 	      jpother.add(btViewMyFundAccount);

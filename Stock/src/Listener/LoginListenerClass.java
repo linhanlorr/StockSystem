@@ -20,15 +20,17 @@ public class LoginListenerClass implements ActionListener{
 	public static Statement statement;
 	public JTextField jtf1;
 	public JPasswordField jpf1;
+	public JTextField jtfipField;
 	public String usernameString;
 	public String passwordString;
 
 	String pw;
 	
-	public LoginListenerClass(JTextField jtf,JPasswordField jpf)
+	public LoginListenerClass(JTextField jtf,JPasswordField jpf,JTextField jip)
 	{
 		jtf1 = jtf;
 		jpf1 = jpf;
+		jtfipField = jip;
 	}
 	
 	
@@ -42,7 +44,7 @@ public class LoginListenerClass implements ActionListener{
 		String url;
 		
 		//连接数据库222.205.38.252
-		url = "jdbc:mysql://222.205.39.229:3306/test?user=root&password=root";
+		url = "jdbc:mysql://"+jtfipField.getText()+":3306/test?user=root&password=root";
 		ResultSet result;
 		int i = 0;
 		try 

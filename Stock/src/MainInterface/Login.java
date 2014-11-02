@@ -22,9 +22,13 @@ public class Login extends JFrame{
 	JButton jbtLogin = new JButton("Login");
 	JLabel jlName = new JLabel("UserName  :");
 	JLabel jlPassword = new JLabel("Password   :");
+	JLabel jlIP = new JLabel("           IP        :");
+	JTextField jtfIP = new JTextField(20);
 	
 	JPanel jPanel = new JPanel();
 
+	jPanel.add(jlIP);
+	jPanel.add(jtfIP);
 	jPanel.add(jlName);
 	jPanel.add(jtfUserName);
 	jPanel.add(jlPassword);
@@ -33,7 +37,7 @@ public class Login extends JFrame{
 	add(jPanel);
 	
 	
-	LoginListenerClass loginListenerClass = new LoginListenerClass(jtfUserName,jpfPassword);
+	LoginListenerClass loginListenerClass = new LoginListenerClass(jtfUserName,jpfPassword,jtfIP);
 	jbtLogin.addActionListener(loginListenerClass);
 	}
 	
