@@ -36,7 +36,7 @@ public class Login extends JFrame{
 	jPanel.add(jbtLogin);
 	add(jPanel);
 	
-	
+	System.out.println();
 	
 	LoginListenerClass loginListenerClass = new LoginListenerClass(jtfUserName,jpfPassword,jtfIP);
 	jbtLogin.addActionListener(loginListenerClass);
