@@ -12,7 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import MainInterface.ViewSecurityAccount;
 import MainInterface.*;
 
 public class ViewMyStock implements ActionListener{
@@ -20,6 +19,7 @@ public class ViewMyStock implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		new MySocketAccount(true);
 		
 	}
 

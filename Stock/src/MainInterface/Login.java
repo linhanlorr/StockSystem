@@ -23,7 +23,7 @@ public class Login extends JFrame{
 	JLabel jlName = new JLabel("UserName  :");
 	JLabel jlPassword = new JLabel("Password   :");
 	JLabel jlIP = new JLabel("           IP        :");
-	JTextField jtfIP = new JTextField(20);
+	JTextField jtfIP = new JTextField("222.205.39.229",20);
 	
 	JPanel jPanel = new JPanel();
 

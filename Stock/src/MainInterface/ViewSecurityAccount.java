@@ -2,14 +2,13 @@ package MainInterface;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
 import java.awt.*;
 
 public class ViewSecurityAccount extends JFrame{
 
 	public ViewSecurityAccount(boolean b)
 	{
-		setTitle("MyStockView");
+		setTitle("AllStockView");
 		setResizable(false);
 		setSize(800, 600);
 		setLocationRelativeTo(null);
