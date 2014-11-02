@@ -1,18 +1,22 @@
 package Data;
 
+import MainInterface.*;
+
 public class StockData {
-	String uid;
-	String name;
-	String rise;
-	String nowprice;
-	String openprice;
-	String closeprice;
-	String buyprice;
-	String saleprice;
-	String oknumber;
-	String highprice;
-	String lowprice;
-	String date;
-	String todayrate;
-	String tomrate;
+	public String uid;
+	public String name;
+	public String rise;
+	public String nowprice;
+	public String openprice;
+	public String closeprice;
+	public String buyprice;
+	public String saleprice;
+	public String oknumber;
+	public String highprice;
+	public String lowprice;
+	public String date;
+	public String todayrate;
+	public String tomrate;
+	public String state;
+	public String number;
 }

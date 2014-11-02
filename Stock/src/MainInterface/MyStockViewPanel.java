@@ -2,16 +2,50 @@ package MainInterface;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
+import Data.StockData;
+import Listener.LoginListenerClass;
 import Listener.ViewMyStock;
 
 
 
 public class MyStockViewPanel extends JPanel{
+	
+	ArrayList<StockData> dataList = new ArrayList<StockData>();
+	String sql;
+	String n;
+	Statement s;
+	StockData sdData;
+	ResultSet result;
 	public MyStockViewPanel()
 	   {  
+		
+		//读入数据库中的表格数据，包括股票名称、股票代码及股票价格  
+		  sql="select name from stock";
+		  s = LoginListenerClass.statement;
+		  try 
+		  {
+			result = s.executeQuery(sql);
+			while(result.next())
+			{
+				n = result.getString("name");
+				sdData = new StockData();
+				sdData.name = n;
+				dataList.add(sdData);
+			}
+		  } 
+		  catch (SQLException e) 
+		  {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		  }
+		
 	      setLayout(new BorderLayout(5,10));
 	      
 	      JPanel jptable = new JPanel();
