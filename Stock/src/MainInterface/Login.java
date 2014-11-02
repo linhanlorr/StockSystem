@@ -13,9 +13,8 @@ import java.util.ArrayList;
 
 public class Login extends JFrame{
 	
-	//private ViewSecurityAccount vAccount = new ViewSecurityAccount();
 	private JFrame vFrame = new JFrame();
-	
+	public static JFrame jFrame;
 	public Login()
 	{
 	JTextField jtfUserName = new JTextField(20);
@@ -33,21 +32,17 @@ public class Login extends JFrame{
 	jPanel.add(jbtLogin);
 	add(jPanel);
 	
-	//vFrame.add(vAccount);
-	//vFrame.setTitle("Stock Account");
-	//vFrame.setSize(1000, 600);
-	//vFrame.setLocationRelativeTo(null);
-	//vFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
-	LoginListenerClass loginListenerClass = new LoginListenerClass(jtfUserName,jpfPassword,vFrame);
+	LoginListenerClass loginListenerClass = new LoginListenerClass(jtfUserName,jpfPassword);
 	jbtLogin.addActionListener(loginListenerClass);
 	}
 	
 	public static void main(String []agrs)
 	{
-		JFrame jFrame = new Login();
+		jFrame = new Login();
 		jFrame.setTitle("Stock System Login");
 		jFrame.setSize(300, 220);
+		jFrame.setResizable(false);
 		jFrame.setLocationRelativeTo(null);
 		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jFrame.setVisible(true);
