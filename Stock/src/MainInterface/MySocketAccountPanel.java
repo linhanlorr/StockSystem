@@ -22,15 +22,15 @@ public class MySocketAccountPanel extends JPanel{
 	      
 	      JTable jtAllInfo;
 	      Object[][] data = 
-	      {
-	    	  new Object[]{"Google","44589"},
-	    	  new Object[]{"Baidu","32249"},
-	    	  new Object[]{"AliBaBa","66547"}
-	      };
+		      {
+		    	  new Object[]{"Google","44589","$17.5","10000","$10.5","+$70000"},
+		    	  new Object[]{"Baidu","32249","$20.8","20000","$25.8","-$100000"},
+		    	  new Object[]{"AliBaBa","66547","$23.4","20000","$18.9","+$90000"}
+		      };
 	      Object title[] =
-	    		  {
-	    		  	"股票名称","股票代码"
-	    		  };
+    		  {
+    		  	"股票名称","股票代码","股票当前价格","股票总数","股票持有成本","持有股票损益"
+    		  };
 	      jtAllInfo = new JTable(data,title){ 
 	    	  public boolean isCellEditable(int row,int col){ 
 	    		   return false;

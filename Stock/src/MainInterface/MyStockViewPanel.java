@@ -25,13 +25,13 @@ public class MyStockViewPanel extends JPanel{
 	      JTable jtAllInfo;
 	      Object[][] data = 
 	      {
-	    	  new Object[]{"Google","44589"},
-	    	  new Object[]{"Baidu","32249"},
-	    	  new Object[]{"AliBaBa","66547"}
+	    	  new Object[]{"Google","44589","$17.5"},
+	    	  new Object[]{"Baidu","32249","$20.8"},
+	    	  new Object[]{"AliBaBa","66547","$23.4"}
 	      };
 	      Object title[] =
 	    		  {
-	    		  	"股票名称","股票代码"
+	    		  	"股票名称","股票代码","股票价格"
 	    		  };
 	      jtAllInfo = new JTable(data,title){ 
 	    	  public boolean isCellEditable(int row,int col){ 
