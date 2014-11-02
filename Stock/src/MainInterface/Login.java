@@ -36,9 +36,7 @@ public class Login extends JFrame{
 	jPanel.add(jbtLogin);
 	add(jPanel);
 	
-	//测试用的注释
-	JLabel jl = new JLabel();
-	jl.action(null, null);
+	
 	
 	LoginListenerClass loginListenerClass = new LoginListenerClass(jtfUserName,jpfPassword,jtfIP);
 	jbtLogin.addActionListener(loginListenerClass);
