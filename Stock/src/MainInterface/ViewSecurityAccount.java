@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class ViewSecurityAccount extends JFrame{
+public class ViewSecurityAccount extends JFrame{//登陆后的窗口
 
 	public ViewSecurityAccount(boolean b)
 	{

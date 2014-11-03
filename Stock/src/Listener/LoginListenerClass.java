@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import MainInterface.ViewSecurityAccount;
 import MainInterface.*;
 
-public class LoginListenerClass implements ActionListener{
+public class LoginListenerClass implements ActionListener{//登录监听事件
 	
 	public static Statement statement;
 	public JTextField jtf1;
@@ -67,7 +67,7 @@ public class LoginListenerClass implements ActionListener{
 		//从数据库中查找用户,比对密码
 		usernameString = jtf1.getText();
 		passwordString = jpf1.getText();
-		sqlString = "select password from administrator where idCard = '"+jtf1.getText()+"'";//362426199404060027
+		sqlString = "select password from administrator where id = '"+jtf1.getText()+"'";
 		try {
 			result = statement.executeQuery(sqlString);
 			while(result.next())

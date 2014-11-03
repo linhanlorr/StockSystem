@@ -7,7 +7,7 @@ import Listener.ViewMyStock;
 
 import java.awt.*;
 
-public class MySocketAccountPanel extends JPanel{
+public class MySocketAccountPanel extends JPanel{//查询我的股票的窗口的控件及布局（My Stock View）
 	public MySocketAccountPanel()
 	{
 		setLayout(new BorderLayout(5,10));

@@ -2,14 +2,22 @@ package MainInterface;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.*;
 
+import Data.StockData;
+import Listener.LoginListenerClass;
 import Listener.ViewMyStock;
 
 
 
-public class MyStockViewPanel extends JPanel{
+public class MyStockViewPanel extends JPanel{//登陆后的主窗口窗口控件及布局（ALL Stock View）
+	
 	public MyStockViewPanel()
 	   {  
 	      setLayout(new BorderLayout(5,10));
@@ -23,17 +31,7 @@ public class MyStockViewPanel extends JPanel{
 	      jpother.setLayout(new GridLayout(13,3,15,15));
 	      
 	      JTable jtAllInfo;
-	      Object[][] data = 
-	      {
-	    	  new Object[]{"Google","44589","$17.5"},
-	    	  new Object[]{"Baidu","32249","$20.8"},
-	    	  new Object[]{"AliBaBa","66547","$23.4"}
-	      };
-	      Object title[] =
-	    		  {
-	    		  	"股票名称","股票代码","股票价格"
-	    		  };
-	      jtAllInfo = new JTable(data,title){ 
+	      jtAllInfo = new JTable(new StockData()){ 
 	    	  public boolean isCellEditable(int row,int col){ 
 	    		   return false;
 	    		} 

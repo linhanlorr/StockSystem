@@ -11,7 +11,7 @@ import java.awt.event.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Login extends JFrame{
+public class Login extends JFrame{//登录窗口
 	
 	private JFrame vFrame = new JFrame();
 	public static JFrame jFrame;
