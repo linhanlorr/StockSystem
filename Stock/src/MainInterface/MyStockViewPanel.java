@@ -12,6 +12,7 @@ import javax.swing.*;
 
 import Data.StockData;
 import Listener.LoginListenerClass;
+import Listener.ViewMyFund;
 import Listener.ViewMyStock;
 
 
@@ -46,13 +47,14 @@ public class MyStockViewPanel extends JPanel{//登陆后的主窗口窗口控件
 	      jpother.add(lbblank);
 	      
 	      JButton btViewMyStock = new JButton("查询我的股票");
-	      btViewMyStock.setSize(20, 10);
 	      jpother.add(btViewMyStock);
 	      ViewMyStock vms = new ViewMyStock();
 	      btViewMyStock.addActionListener(vms);
 	  
 	      JButton btViewMyFundAccount = new JButton("查询我的资金账户");
 	      jpother.add(btViewMyFundAccount);
+	      ViewMyFund vmf = new ViewMyFund();
+	      btViewMyFundAccount.addActionListener(vmf);
 	      
 	      JLabel lb1 = new JLabel("请输入股票名称：");
 	      jpother.add(lb1);
