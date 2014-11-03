@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.*;
 
@@ -15,37 +16,10 @@ import Listener.ViewMyStock;
 
 
 
-public class MyStockViewPanel extends JPanel{
+public class MyStockViewPanel extends JPanel{//登陆后的主窗口窗口控件及布局（ALL Stock View）
 	
-	ArrayList<StockData> dataList = new ArrayList<StockData>();
-	String sql;
-	String n;
-	Statement s;
-	StockData sdData;
-	ResultSet result;
 	public MyStockViewPanel()
 	   {  
-		
-		//读入数据库中的表格数据，包括股票名称、股票代码及股票价格  
-		  sql="select name from stock";
-		  s = LoginListenerClass.statement;
-		  try 
-		  {
-			result = s.executeQuery(sql);
-			while(result.next())
-			{
-				n = result.getString("name");
-				sdData = new StockData();
-				sdData.name = n;
-				dataList.add(sdData);
-			}
-		  } 
-		  catch (SQLException e) 
-		  {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		  }
-		
 	      setLayout(new BorderLayout(5,10));
 	      
 	      JPanel jptable = new JPanel();
@@ -57,17 +31,7 @@ public class MyStockViewPanel extends JPanel{
 	      jpother.setLayout(new GridLayout(13,3,15,15));
 	      
 	      JTable jtAllInfo;
-	      Object[][] data = 
-	      {
-	    	  new Object[]{"Google","44589","$17.5"},
-	    	  new Object[]{"Baidu","32249","$20.8"},
-	    	  new Object[]{"AliBaBa","66547","$23.4"}
-	      };
-	      Object title[] =
-	    		  {
-	    		  	"股票名称","股票代码","股票价格"
-	    		  };
-	      jtAllInfo = new JTable(data,title){ 
+	      jtAllInfo = new JTable(new StockData()){ 
 	    	  public boolean isCellEditable(int row,int col){ 
 	    		   return false;
 	    		} 
