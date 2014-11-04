@@ -57,8 +57,9 @@ public class LoginListenerClass implements ActionListener{//登录监听事件
 		} 
 		catch (Exception e1) 
 		{
-			JOptionPane.showMessageDialog(null, "数据库连接错误", "ERROR", JOptionPane.ERROR_MESSAGE);
-			System.exit(0);
+			System.out.println("数据库连接错误！");
+			// TODO: handle exception
+			System.out.print("ERROR!");
 		}
 		
 		//从数据库中查找用户,比对密码
