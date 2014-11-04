@@ -12,6 +12,7 @@ import javax.swing.*;
 
 import Data.StockData;
 import Listener.LoginListenerClass;
+import Listener.SearchStockListener;
 import Listener.ViewMyFund;
 import Listener.ViewMyStock;
 
@@ -70,6 +71,7 @@ public class MyStockViewPanel extends JPanel{//登陆后的主窗口窗口控件
 	      
 	      JButton btSearch = new JButton("查询");
 	      jpother.add(btSearch);
-	      
+//	      SearchStockListener ssl = new SearchStockListener(jtfStockSymbol.getText(),jtfStockName.getText());
+//	      btSearch.addMouseListener(ssl);
 	   }
 }
