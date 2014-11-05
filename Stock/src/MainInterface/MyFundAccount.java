@@ -12,7 +12,7 @@ public class MyFundAccount extends JFrame{
 	{
 		setTitle("MyFundView");
 		setResizable(false);
-		setSize(800, 600);
+		setSize(800, 200);
 		setLocationRelativeTo(null);
 		setContentPane(new MyFundAccountPanel());
 		setVisible(b);

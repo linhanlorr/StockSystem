@@ -10,7 +10,7 @@ import javax.swing.table.AbstractTableModel;
 import Listener.LoginListenerClass;
 import MainInterface.*;
 
-public class StockData extends AbstractTableModel {// 数据库导入JTable所用的表格模型
+public class TradeHistoryData extends AbstractTableModel {// 数据库导入JTable所用的表格模型
 	String n;
 	StockData sdData;
 	int i = 1;
@@ -18,30 +18,31 @@ public class StockData extends AbstractTableModel {// 数据库导入JTable所�
 	private Vector<String> title;
 	public ResultSet rs;
 
-	public StockData() {
-		String sql = "select * from stock";
-		drawTable(sql);
+	public TradeHistoryData(String str) {
+		if (str.equals("buy")) {
+			String sqlbuy = "select * from deal where buyerId = '"
+					+ User.jtfUsername.getText() + "'";
+			drawBuyTable(sqlbuy);
+		}
+		if (str.equals("sell")) {
+			String sqlsell = "select * from deal where sellerId = '"
+					+ User.jtfUsername.getText() + "'";
+			drawSellTable(sqlsell);
+		}
 	}
 
-	public StockData(String sqlstring) {
-		drawTable(sqlstring);
-	}
-
-	public void drawTable(String sql) {
+	public void drawBuyTable(String sqlbuy) {
 		data = new Vector<String>();
 		// 读入数据库中的表格数据，包括股票名称、股票代码及股票价格
 		Statement s = User.statement;
 		try {
-			rs = s.executeQuery(sql);
+			rs = s.executeQuery(sqlbuy);
 			while (rs.next()) {
 				data.add(rs.getString(1));
-				data.add(rs.getString(2));
 				data.add(rs.getString(3));
 				data.add(rs.getString(4));
 				data.add(rs.getString(5));
 				data.add(rs.getString(6));
-				data.add(rs.getString(10));
-				data.add(rs.getString(11));
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -50,13 +51,36 @@ public class StockData extends AbstractTableModel {// 数据库导入JTable所�
 		}
 
 		title = new Vector<String>();
+		title.add("SellerID");
 		title.add("StockID");
-		title.add("StockName");
-		title.add("RISE");
-		title.add("NowPrice");
-		title.add("OpenPrice");
-		title.add("ClosePrice");
-		title.add("State");
+		title.add("StockTime");
+		title.add("Price");
+		title.add("Number");
+	}
+
+	public void drawSellTable(String sqlsell) {
+		// 读入数据库中的表格数据，包括股票名称、股票代码及股票价格
+		Statement s = User.statement;
+		try {
+			rs = s.executeQuery(sqlsell);
+			while (rs.next()) {
+				data.add(rs.getString(2));
+				data.add(rs.getString(3));
+				data.add(rs.getString(4));
+				data.add(rs.getString(5));
+				data.add(rs.getString(6));
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		title = new Vector<String>();
+		title.add("BuyerID");
+		title.add("StockID");
+		title.add("StockTime");
+		title.add("Price");
 		title.add("Number");
 	}
 

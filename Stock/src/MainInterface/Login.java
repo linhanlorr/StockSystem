@@ -18,13 +18,14 @@ public class Login extends JFrame{//登录窗口
 	
 	public Login()
 	{
-	JTextField jtfUserName = new JTextField(20);
-	JPasswordField jpfPassword = new JPasswordField(20);
+	JTextField jtfUserName = new JTextField("barry_wang",20);
+	User.jtfUsername = jtfUserName;
+	JPasswordField jpfPassword = new JPasswordField("xxx1",20);
 	JButton jbtLogin = new JButton("Login");
 	JLabel jlName = new JLabel("UserName  :");
 	JLabel jlPassword = new JLabel("Password   :");
 	JLabel jlIP = new JLabel("           IP        :");
-	JTextField jtfIP = new JTextField("222.205.39.229",20);
+	JTextField jtfIP = new JTextField("222.205.25.19",20);
 	
 	JPanel jPanel = new JPanel();
 

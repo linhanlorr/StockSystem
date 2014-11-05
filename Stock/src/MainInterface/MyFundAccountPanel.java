@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import javax.swing.*;
 
+import Data.MyFundData;
 import Data.StockData;
 import Listener.LoginListenerClass;
 import Listener.ViewMyStock;
@@ -25,18 +26,11 @@ public class MyFundAccountPanel extends JPanel{
 	      JPanel jpother = new JPanel();
 	      add(jpother,BorderLayout.CENTER);
 	      
-	      jpother.setLayout(new GridLayout(10,3,15,15));
+	      jpother.setLayout(new BorderLayout());
 	      
 	      JTable jtAllInfo;
-	      Object[][] data = 
-		      {
-		    	  new Object[]{"￥54455557.64","￥44589"}
-		      };
-	      Object title[] =
-  		  {
-  		  	"可用资金","冻结资金"
-  		  };
-	      jtAllInfo = new JTable(data,title){ 
+	      
+	      jtAllInfo = new JTable(new MyFundData()){ 
 	    	  public boolean isCellEditable(int row,int col){ 
 	    		   return false;
 	    		} 
@@ -46,17 +40,9 @@ public class MyFundAccountPanel extends JPanel{
 	      
 	      JScrollPane scrollPane = new JScrollPane(jtAllInfo);
 	      jptable.add(scrollPane);
-	      
-	      JLabel lbblank = new JLabel("");
-	      jpother.add(lbblank);
-	      
-	      
-	      JLabel lbstockname = new JLabel("");
-	      jpother.add(lbstockname);
-	      
   
 	      JLabel lbstocksymbol = new JLabel("我的资金账户");
-	      jpother.add(lbstocksymbol);
+	      jpother.add(lbstocksymbol,BorderLayout.CENTER);
 	      
 	      
 	}
