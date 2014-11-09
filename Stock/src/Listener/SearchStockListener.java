@@ -67,7 +67,8 @@ public class SearchStockListener implements ActionListener {
 				return;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "查询股票错误","ERROR",JOptionPane.ERROR_MESSAGE);
+//			e.printStackTrace();
 		}
 
 	}
