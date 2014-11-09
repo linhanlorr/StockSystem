@@ -80,10 +80,11 @@ public class LoginListenerClass implements ActionListener {// 登录监听事件
 					{
 						i = 1;
 						break;
-					}else {
-						JOptionPane.showMessageDialog(null,
-								"验证码错误!", "ERROR",
-								JOptionPane.ERROR_MESSAGE);
+					}
+					else 
+					{
+						
+						i=2;
 					}
 					
 				}
@@ -94,17 +95,24 @@ public class LoginListenerClass implements ActionListener {// 登录监听事件
 				new ViewSecurityAccount(true);
 				Login.jFrame.setVisible(false);
 			} 
-			else //判断登陆次数，最多只能有五次
+			else if(i==0) //判断登陆次数，最多只能有五次
 			{
 				count++;
 				JOptionPane.showMessageDialog(null,
-						"用户名或密码错误!还有"+count+"次机会!", "ERROR",
+						"用户名或密码错误!还有"+(5-count)+"次机会!", "ERROR",
 						JOptionPane.ERROR_MESSAGE);
 				if(count==5)
 				{
 					count=0;
 					System.exit(0);
 				}
+			}
+			else if(i==2)
+			{
+				JOptionPane.showMessageDialog(null,
+						"验证码错误!", "ERROR",
+						JOptionPane.ERROR_MESSAGE);
+				vCode.nextCode();
 			}
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block

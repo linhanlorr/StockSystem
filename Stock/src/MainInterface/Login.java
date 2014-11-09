@@ -29,6 +29,9 @@ public class Login extends JFrame{//登录窗口
 		initComponents();
 		
 		JTextField field = new JTextField(15);
+		field.setPreferredSize(new Dimension(40, 40));
+		vcode = new ValidCode();
+		info.put("code", field);
 		
 		JTextField jtfUserName = new JTextField("barry_wang",20);
 		User.jtfUsername = jtfUserName;
@@ -48,9 +51,7 @@ public class Login extends JFrame{//登录窗口
 		jPanel.add(jlPassword);
 		jPanel.add(jpfPassword);
 		jPanel.add(field);
-		field.setPreferredSize(new Dimension(40, 40));
-		vcode = new ValidCode();
-		info.put("code", field);
+
 		jPanel.add(vcode);
 		jPanel.add(jbtLogin);
 
