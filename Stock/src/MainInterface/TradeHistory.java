@@ -1,5 +1,6 @@
 package MainInterface;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
@@ -17,33 +18,38 @@ public class TradeHistory extends JFrame {
 
 	public JPanel TradeHistoryPanel() {
 		JPanel jp = new JPanel();
+		jp.setLayout(new BorderLayout());
 		
+		JPanel jpbuy = new JPanel();
+		jpbuy.setLayout(new BorderLayout());
 		JLabel jlBuy = new JLabel("买记录");
-		jp.add(jlBuy);
-//		JTable jtBuy;
-//		jtBuy = new JTable(new TradeHistoryData("buy")) {
-//			public boolean isCellEditable(int row, int col) {
-//				return false;
-//			}
-//		};
-//		jtBuy.setPreferredScrollableViewportSize(new Dimension(600, 500));
-//		JScrollPane buyScrollPane = new JScrollPane(jtBuy);
-//		jp.add(buyScrollPane);
-//		
-//		JLabel jlSell = new JLabel("买记录");
-//		jp.add(jlSell);
-//		JTable jtSell;
-//		jtSell = new JTable(new TradeHistoryData("sell")) {
-//			public boolean isCellEditable(int row, int col) {
-//				return false;
-//			}
-//		};
-//		jtSell.setPreferredScrollableViewportSize(new Dimension(600, 500));
-//		JScrollPane sellScrollPane = new JScrollPane(jtSell);
-//		jp.add(sellScrollPane);
+		jpbuy.add(jlBuy,BorderLayout.NORTH);
+		JTable jtBuy;
+		jtBuy = new JTable(new TradeHistoryData("buy")) {
+			public boolean isCellEditable(int row, int col) {
+				return false;
+			}
+		};
+		jtBuy.setPreferredScrollableViewportSize(new Dimension(600, 200));
+		JScrollPane buyScrollPane = new JScrollPane(jtBuy);
+		jpbuy.add(buyScrollPane,BorderLayout.CENTER);
 		
+		JPanel jpsell = new JPanel();
+		jpsell.setLayout(new BorderLayout());
+		JLabel jlSell = new JLabel("卖记录");
+		jpsell.add(jlSell,BorderLayout.NORTH);
+		JTable jtSell;
+		jtSell = new JTable(new TradeHistoryData("sell")) {
+			public boolean isCellEditable(int row, int col) {
+				return false;
+			}
+		};
+		jtSell.setPreferredScrollableViewportSize(new Dimension(600, 200));
+		JScrollPane sellScrollPane = new JScrollPane(jtSell);
+		jpsell.add(sellScrollPane,BorderLayout.CENTER);
 		
-		
+		jp.add(jpbuy,BorderLayout.NORTH);
+		jp.add(jpsell,BorderLayout.SOUTH);
 		return jp;
 	}
 

@@ -10,7 +10,7 @@ import java.awt.*;
 public class MyFundAccount extends JFrame{
 	public MyFundAccount(boolean b)
 	{
-		setTitle("MyFundView");
+		setTitle("我的资金账户");
 		setResizable(false);
 		setSize(800, 200);
 		setLocationRelativeTo(null);

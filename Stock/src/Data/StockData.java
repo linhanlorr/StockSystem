@@ -36,12 +36,10 @@ public class StockData extends AbstractTableModel {// 数据库导入JTable所�
 			while (rs.next()) {
 				data.add(rs.getString(1));
 				data.add(rs.getString(2));
-				data.add(rs.getString(3));
+				data.add(rs.getString(3)+"%");
 				data.add(rs.getString(4));
 				data.add(rs.getString(5));
 				data.add(rs.getString(6));
-				data.add(rs.getString(10));
-				data.add(rs.getString(11));
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -50,14 +48,12 @@ public class StockData extends AbstractTableModel {// 数据库导入JTable所�
 		}
 
 		title = new Vector<String>();
-		title.add("StockID");
-		title.add("StockName");
-		title.add("RISE");
-		title.add("NowPrice");
-		title.add("OpenPrice");
-		title.add("ClosePrice");
-		title.add("State");
-		title.add("Number");
+		title.add("股票代码");
+		title.add("股票名称");
+		title.add("涨幅");
+		title.add("当前价格");
+		title.add("开盘价");
+		title.add("收盘价");
 	}
 
 	@Override

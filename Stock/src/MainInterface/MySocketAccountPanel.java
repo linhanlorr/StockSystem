@@ -4,11 +4,13 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import Data.MyStockData;
+import Listener.BuyStock;
 import Listener.ViewMyStock;
 
 import java.awt.*;
 
-public class MySocketAccountPanel extends JPanel{//查询我的股票的窗口的控件及布局（My Stock View）
+public class MySocketAccountPanel extends JPanel{
+	//查询我的股票的窗口的控件及布局（My Stock View）
 	public MySocketAccountPanel()
 	{
 		setLayout(new BorderLayout(5,10));
@@ -52,6 +54,8 @@ public class MySocketAccountPanel extends JPanel{//查询我的股票的窗口�
 	      
 	      JButton btbuy = new JButton("购买股票");
 	      jpother.add(btbuy);
+	      BuyStock buyStock = new BuyStock(jtfStockSymbol);
+	      btbuy.addActionListener(buyStock);
 	      
 	      JButton btseal = new JButton("卖出股票");
 	      jpother.add(btseal);

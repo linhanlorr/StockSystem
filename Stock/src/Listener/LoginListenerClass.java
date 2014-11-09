@@ -16,19 +16,26 @@ import MainInterface.*;
 
 public class LoginListenerClass implements ActionListener {// 登录监听事件
 
-	public Statement statement;
+	public static Statement statement;
 	public JTextField jtf1;
 	public JPasswordField jpf1;
 	public JTextField jtfipField;
-	public String usernameString;
-	public char[] passwordString;
-
+	public static String usernameString;
+	public static char[] passwordString;
+	public static Double accountdDouble;
+	
+	private JTextField vcfield;
+	private int count=0;
+	
+	ValidCode vCode;
 	String pw;
 
-	public LoginListenerClass(JTextField jtf, JPasswordField jpf, JTextField jip) {
+	public LoginListenerClass(JTextField jtf, JPasswordField jpf, JTextField jip,JTextField field,ValidCode vc) {
 		jtf1 = jtf;
 		jpf1 = jpf;
 		jtfipField = jip;
+		vcfield = field;
+		vCode = vc;
 	}
 
 	@Override
@@ -60,16 +67,25 @@ public class LoginListenerClass implements ActionListener {// 登录监听事件
 		// 从数据库中查找用户,比对密码
 		usernameString = jtf1.getText();
 		passwordString = jpf1.getPassword();
-		sqlString = "select account_password from capitalaccount where account_id = '"
+		sqlString = "select account_password,account_balance from capitalaccount where account_id = '"
 				+ jtf1.getText() + "'";
 		try {
 			int i = 0;
 			result = statement.executeQuery(sqlString);
 			while (result.next()) {
 				pw = result.getString("account_password");
-				if (pw.equals(String.valueOf(passwordString))) {
-					i = 1;
-					break;
+				accountdDouble = Double.parseDouble(result.getString("account_balance"));
+				if (pw.equals(String.valueOf(passwordString))) {//判断密码
+					if(vCode.getCode().equals(vcfield.getText()))//判断验证码
+					{
+						i = 1;
+						break;
+					}else {
+						JOptionPane.showMessageDialog(null,
+								"验证码错误!", "ERROR",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					
 				}
 
 			}
@@ -77,10 +93,18 @@ public class LoginListenerClass implements ActionListener {// 登录监听事件
 				System.out.println("Login Success!");
 				new ViewSecurityAccount(true);
 				Login.jFrame.setVisible(false);
-			} else {
+			} 
+			else //判断登陆次数，最多只能有五次
+			{
+				count++;
 				JOptionPane.showMessageDialog(null,
-						"Username or Password incorrect!", "ERROR",
+						"用户名或密码错误!还有"+count+"次机会!", "ERROR",
 						JOptionPane.ERROR_MESSAGE);
+				if(count==5)
+				{
+					count=0;
+					System.exit(0);
+				}
 			}
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block

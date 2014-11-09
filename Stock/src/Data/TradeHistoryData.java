@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 import Listener.LoginListenerClass;
@@ -16,29 +17,31 @@ public class TradeHistoryData extends AbstractTableModel {// 数据库导入JTab
 	int i = 1;
 	private Vector<String> data;
 	private Vector<String> title;
-	public ResultSet rs;
 
 	public TradeHistoryData(String str) {
-		if (str.equals("buy")) {
-			String sqlbuy = "select * from deal where buyerId = '"
-					+ User.jtfUsername.getText() + "'";
-			drawBuyTable(sqlbuy);
+		if ((!str.equals("buy"))&&(!str.equals("sell"))){
+			JOptionPane.showMessageDialog(null, "指令错误");
+			return;
 		}
-		if (str.equals("sell")) {
-			String sqlsell = "select * from deal where sellerId = '"
-					+ User.jtfUsername.getText() + "'";
-			drawSellTable(sqlsell);
-		}
+		String sql = "select * from deal where " + str + "erId = '"
+				+ User.jtfUsername.getText() + "'";
+		drawTable(str, sql);
 	}
 
-	public void drawBuyTable(String sqlbuy) {
+	public void drawTable(String str, String sql) {
 		data = new Vector<String>();
 		// 读入数据库中的表格数据，包括股票名称、股票代码及股票价格
 		Statement s = User.statement;
+		ResultSet rs;
 		try {
-			rs = s.executeQuery(sqlbuy);
+			rs = s.executeQuery(sql);
 			while (rs.next()) {
+				if (str.equals("buy")){
 				data.add(rs.getString(1));
+				}
+				if (str.equals("sell")){
+					data.add(rs.getString(2));
+				}
 				data.add(rs.getString(3));
 				data.add(rs.getString(4));
 				data.add(rs.getString(5));
@@ -51,7 +54,10 @@ public class TradeHistoryData extends AbstractTableModel {// 数据库导入JTab
 		}
 
 		title = new Vector<String>();
-		title.add("SellerID");
+		if (str.equals("buy")) {
+			title.add("ButyerID");
+		} else
+			title.add("SellerID");
 		title.add("StockID");
 		title.add("StockTime");
 		title.add("Price");
@@ -61,6 +67,9 @@ public class TradeHistoryData extends AbstractTableModel {// 数据库导入JTab
 	public void drawSellTable(String sqlsell) {
 		// 读入数据库中的表格数据，包括股票名称、股票代码及股票价格
 		Statement s = User.statement;
+		ResultSet rs;
+		data.clear();
+		title.clear();
 		try {
 			rs = s.executeQuery(sqlsell);
 			while (rs.next()) {
